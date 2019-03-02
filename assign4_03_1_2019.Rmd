@@ -1,0 +1,60 @@
+---
+title: "Home work 4"
+author: "Caroline Bena Kuno"
+date: "March 1, 2019"
+output: pdf_document
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+attach(infert)
+ggplot(infert, aes(x =education, y =age, group =induced, color=induced)) +
+  geom_point()
+edu_induced <- infert%>% 
+  group_by(education,induced)%>% 
+  tally() 
+ head(edu_induced)
+ View(edu_induced)
+
+```
+```{r}
+library(ggplot2)
+library(dplyr)
+attach(infert)
+edu_induced <- infert%>% 
+  group_by(education,induced)%>% 
+  tally() 
+ggplot(edu_induced, aes(x =education, y=n, group =induced, color=induced)) +
+  geom_line() + facet_wrap(~ induced)
+```
+
+## Problem 2
+
+**Reference**
+Madigan, E. A., Curet, O. L., & Zrinyi, M.(2008).Workforce analysis using data mining and linear regression
+to understand HIV/AIDS prevalence patterns.*Human resources for health, 6(1), 2.*
+
+**Introduction** 
+
+The purpose of the study was to examine the association between the health workforce,
+particularly the nursing workforce, and the achievement of the MDGs, taking into account other factors
+known to influence health status, such as socioeconomic indicators.
+
+**Method** 
+
+A merged data set that includes country-level MDG outcomes, workforce statistics, and general
+socioeconomic indicators was utilized for the present study. Data were obtained from the Global Human
+Resources for Health Atlas 2004, the WHO Statistical Information System (WHOSIS) 2000, UN Fund for
+Development and Population Assistance (UNFDPA) 2000, the International Council of Nurses "Nursing in
+the World", and the WHO/UNAIDS database. Two approaches were used for analysis: data mining using
+classification and regression trees (CART) and standard statistical analyses using ordinary least squares
+regression.
+
+*Results and conclusion** 
+
+The main factors in understanding HIV/AIDS prevalence rates are physician
+density followed by female literacy rates and nursing density in the country. Using general linear model
+approaches, increased physician and nurse density (number of physicians or nurses per population) was
+associated with lower adult HIV/AIDS prevalence rate, even when controlling for socioeconomic indicators.
+Increased nurse and physician density are associated with improved health outcomes,suggesting that countries
+aiming to attain the MDGs related to HIV/AIDS would do well to invest in their health workforce.
